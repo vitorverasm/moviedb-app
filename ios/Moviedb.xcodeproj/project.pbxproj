@@ -16,6 +16,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* MoviedbTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MoviedbTests.m */; };
+		4EC9B8F223881495001AB2DA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EC9B8F123881495001AB2DA /* GoogleService-Info.plist */; };
 		873B2E622E6ED45547A0FD90 /* libPods-Moviedb-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A1BC689D6535A8A852F5EDD /* libPods-Moviedb-tvOSTests.a */; };
 		AF91C3AA9BB7E01A4F78641E /* libPods-Moviedb-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E4FF5244F0F79E49DD1D83 /* libPods-Moviedb-tvOS.a */; };
 		C97D1E7910905AA61103CD02 /* libPods-MoviedbTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C82D3457F08F2A89FB5D731A /* libPods-MoviedbTests.a */; };
@@ -57,6 +58,7 @@
 		2D02E47B1E0B4A5D006451C7 /* Moviedb-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moviedb-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Moviedb-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Moviedb-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39DEFD2B3AE71332826CA93A /* Pods-Moviedb-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moviedb-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Moviedb-tvOSTests/Pods-Moviedb-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		4EC9B8F123881495001AB2DA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		51E4FF5244F0F79E49DD1D83 /* libPods-Moviedb-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Moviedb-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DA9F13B135259E0D47FFD0 /* Pods-Moviedb-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moviedb-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Moviedb-tvOS/Pods-Moviedb-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		550268D53AE000A727FC6A61 /* Pods-Moviedb-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moviedb-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Moviedb-tvOSTests/Pods-Moviedb-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		13B07FAE1A68108700A75B9A /* Moviedb */ = {
 			isa = PBXGroup;
 			children = (
+				4EC9B8F123881495001AB2DA /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -148,7 +151,6 @@
 				0F303D4874266C1A9D9D06C8 /* Pods-MoviedbTests.debug.xcconfig */,
 				6069A3B1E1D44DD1C4D996AA /* Pods-MoviedbTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -338,6 +340,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				4EC9B8F223881495001AB2DA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
