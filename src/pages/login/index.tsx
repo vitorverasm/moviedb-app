@@ -1,11 +1,11 @@
 import React, {FunctionComponent} from 'react';
-import {Text, View} from 'react-native';
+import {Container, Text} from '../../styles';
 
 const Login: FunctionComponent = () => {
   return (
-    <View>
+    <Container centered>
       <Text>Login</Text>
-    </View>
+    </Container>
   );
 };
 

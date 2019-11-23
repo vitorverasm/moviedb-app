@@ -1,11 +1,11 @@
 import React, {FunctionComponent} from 'react';
-import {Text, View} from 'react-native';
+import {Container, Text} from '../../styles';
 
 const Register: FunctionComponent = () => {
   return (
-    <View>
+    <Container centered>
       <Text>Register</Text>
-    </View>
+    </Container>
   );
 };
 
