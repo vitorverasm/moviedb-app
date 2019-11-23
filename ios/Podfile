@@ -34,9 +34,9 @@ target 'Moviedb' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'Firebase/Core', '~> 5.15.0'
+  pod 'Firebase/Core', '~> 6.3.0'
 
-  pod 'RNFirebase', :path => '../node_modules/react-native-firebase'
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
 
   target 'MoviedbTests' do
     inherit! :search_paths
