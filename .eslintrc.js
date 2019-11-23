@@ -8,7 +8,9 @@ module.exports = {
     'prettier/react'
   ],
   rules: {
-    'react-native/no-inline-styles': 'off'
+    'react-native/no-inline-styles': 'off',
+    'import/no-extraneous-dependencies': ['error', {devDependencies: true}],
+    'no-console': 'off'
   },
   globals: {
     HermesInternal: true
