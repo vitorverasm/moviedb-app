@@ -7,7 +7,9 @@ module.exports = {
     'prettier/@typescript-eslint',
     'prettier/react'
   ],
-  rules: {},
+  rules: {
+    'react-native/no-inline-styles': 'off'
+  },
   globals: {
     HermesInternal: true
   }
