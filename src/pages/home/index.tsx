@@ -1,16 +1,11 @@
 import React, {FunctionComponent} from 'react';
-import {Text, View} from 'react-native';
-import styles from '../../styles';
+import {Container, Text} from '../../styles';
 
 const Home: FunctionComponent = () => {
   return (
-    <View
-      style={[
-        styles.container,
-        {justifyContent: 'center', alignItems: 'center'}
-      ]}>
-      <Text style={{color: '#333'}}>Home</Text>
-    </View>
+    <Container centered>
+      <Text>Home</Text>
+    </Container>
   );
 };
 

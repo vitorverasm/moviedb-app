@@ -1,15 +1,15 @@
 import React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
 import Home from './pages/home';
-import styles from './styles';
+import {SafeAreaContainer} from './styles';
 
 const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={styles.container}>
+      <SafeAreaContainer>
         <Home />
-      </SafeAreaView>
+      </SafeAreaContainer>
     </>
   );
 };
