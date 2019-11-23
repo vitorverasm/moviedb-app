@@ -1,6 +1,6 @@
 import React from 'react';
 import {StatusBar} from 'react-native';
-import Login from './pages/login';
+import Router from './routes';
 import {SafeAreaContainer} from './styles';
 
 const App = () => {
@@ -8,7 +8,7 @@ const App = () => {
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaContainer>
-        <Login />
+        <Router />
       </SafeAreaContainer>
     </>
   );
