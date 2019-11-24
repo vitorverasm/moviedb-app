@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {ActivityIndicator, StatusBar, View} from 'react-native';
 import {NavigationStackProp} from 'react-navigation-stack';
+import {checkUserAuth} from '../../api/authentication';
 
 interface Props {
   navigation: NavigationStackProp<{
@@ -20,12 +21,11 @@ class Loading extends Component<Props> {
 
   isLoggedIn(): void {
     const {
-      navigation: {navigate, getParam}
+      navigation: {navigate}
     } = this.props;
-    // TODO: ADD later
-    // const userToken = await AsyncStorage.getItem('userToken');
-    const userToken: boolean = getParam('isLoggedIn', false);
-    navigate(userToken ? 'App' : 'Auth');
+    checkUserAuth(user => {
+      navigate(user ? 'App' : 'Auth');
+    });
   }
 
   render() {

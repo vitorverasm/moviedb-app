@@ -23,7 +23,6 @@ export const LogoContainer = styled.View`
 export const LogoTitle = styled(Headline)`
   font-weight: bold;
   text-align-vertical: bottom;
-  /* color: ${theme.colors.primary}; */
 `;
 
 export const PageContainer = styled(Container)`
@@ -37,9 +36,7 @@ export const InputsContainer = styled.View`
 export const UsernameInput = styled(Input)``;
 export const PasswordInput = styled(Input).attrs(() => ({
   secureTextEntry: true
-}))`
-  margin-top: 10px;
-`;
+}))``;
 
 export const LoginButton = styled(CustomButton).attrs(() => ({
   mode: 'outlined',
@@ -47,7 +44,7 @@ export const LoginButton = styled(CustomButton).attrs(() => ({
 }))`
   border-color: ${theme.colors.primary};
   border-width: 2px;
-  margin-top: 20px;
+  margin-top: 10px;
 `;
 
 export const RegisterButton = styled(CustomButton).attrs(() => ({

@@ -1,5 +1,5 @@
 import {Keyboard} from 'react-native';
-import {TextInput, Button} from 'react-native-paper';
+import {Button, HelperText, Snackbar, TextInput} from 'react-native-paper';
 import styled from 'styled-components/native';
 
 interface ContainerProps {
@@ -35,3 +35,9 @@ export const Input = styled(TextInput).attrs(() => ({
 }))``;
 
 export const CustomButton = styled(Button)``;
+
+export const ErrorMessage = styled(Snackbar)``;
+
+export const ErrorTip = styled(HelperText).attrs(() => ({
+  type: 'error'
+}))``;

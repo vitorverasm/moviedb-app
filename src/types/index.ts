@@ -1,3 +1,4 @@
+import {AxiosInstance} from 'axios';
 import {LOGIN, LOGOUT} from '../redux/actions/actionTypes';
 
 export interface Action {
@@ -26,4 +27,9 @@ export interface LogoutAction extends Action {
 
 export interface AuthenticationState {
   form?: LoginForm;
+}
+
+export interface RequestService {
+  moviedbAPI: AxiosInstance;
+  firebaseAPI: AxiosInstance;
 }
