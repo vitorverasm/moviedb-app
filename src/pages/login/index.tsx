@@ -53,7 +53,7 @@ class Login extends Component<Props, State> {
       <KeyboarDismiss>
         <PageContainer>
           <LogoContainer>
-            <Logo source={require('../../assets/logo.png')} />
+            <Logo source={require('../../assets/movie-night.png')} />
             <LogoTitle>Movies App</LogoTitle>
           </LogoContainer>
           <Formik

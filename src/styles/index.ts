@@ -29,6 +29,9 @@ export const Row = styled.View`
   flex-direction: row;
 `;
 
-export const Input = styled(TextInput).attrs(() => ({mode: 'outlined'}))``;
+export const Input = styled(TextInput).attrs(() => ({
+  mode: 'outlined',
+  dense: true
+}))``;
 
 export const CustomButton = styled(Button)``;
