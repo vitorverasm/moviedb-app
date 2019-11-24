@@ -1,15 +1,16 @@
 import React from 'react';
 import {StatusBar} from 'react-native';
+import {Provider as PaperProvider} from 'react-native-paper';
 import Router from './routes';
-import {SafeAreaContainer} from './styles';
+import theme from './styles/theme';
 
 const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaContainer>
+      <PaperProvider theme={theme}>
         <Router />
-      </SafeAreaContainer>
+      </PaperProvider>
     </>
   );
 };

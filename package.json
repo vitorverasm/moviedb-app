@@ -8,7 +8,9 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "tsc --noEmit --skipLibCheck && eslint --fix --ext .js,.jsx,.ts,.tsx ./",
-    "prettier": "npx prettier --write **/*.{js,jsx,ts,tsx,json} && npx prettier --write *.{js,jsx,ts,tsx,json}"
+    "prettier": "npx prettier --write **/*.{js,jsx,ts,tsx,json} && npx prettier --write *.{js,jsx,ts,tsx,json}",
+    "adb:fix": "adb reverse tcp:8081 tcp:8081",
+    "adb:fix:tron": "adb reverse tcp:9090 tcp:9090"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.6.3",
