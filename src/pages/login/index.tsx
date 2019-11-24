@@ -28,10 +28,16 @@ interface FormValues {
   password: string;
 }
 
-class Login extends Component<Props> {
+interface State {
+  initialValues: FormValues;
+}
+
+class Login extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = {};
+    this.state = {
+      initialValues: {email: '', password: ''}
+    };
   }
 
   static navigationOptions: NavigationStackOptions = {
@@ -39,7 +45,7 @@ class Login extends Component<Props> {
   };
 
   render() {
-    const initialValues: FormValues = {email: '', password: ''};
+    const {initialValues} = this.state;
     const {
       navigation: {navigate}
     } = this.props;

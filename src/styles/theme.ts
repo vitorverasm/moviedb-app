@@ -23,8 +23,8 @@ const theme: CustomTheme = {
   roundness: 2,
   colors: {
     ...DefaultTheme.colors,
-    primary: Colors.grey800,
-    accent: Colors.pink300,
+    primary: '#1A2B63',
+    accent: '#FE3745',
     text: Colors.grey800,
     background: '#F5F6F7',
     lightGray: '#e5e5e5'

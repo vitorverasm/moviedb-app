@@ -23,6 +23,7 @@ export const LogoContainer = styled.View`
 export const LogoTitle = styled(Headline)`
   font-weight: bold;
   text-align-vertical: bottom;
+  color: ${theme.colors.primary};
 `;
 
 export const PageContainer = styled(Container)`
