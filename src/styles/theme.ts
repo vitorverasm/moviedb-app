@@ -23,9 +23,9 @@ const theme: CustomTheme = {
   roundness: 2,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#3E35B4',
-    accent: '#FE3745',
-    text: '#3E35B4',
+    primary: '#6C63FF',
+    accent: '#FE9B95',
+    text: '#6C63FF',
     background: '#F5F6F7',
     lightGray: '#e5e5e5'
   }
