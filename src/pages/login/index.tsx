@@ -1,5 +1,6 @@
 import {Formik} from 'formik';
 import React, {Component} from 'react';
+import {Snackbar} from 'react-native-paper';
 import {
   NavigationStackOptions,
   NavigationStackProp
@@ -7,6 +8,7 @@ import {
 import reactotron from 'reactotron-react-native';
 import Routes from '../../routes/routeTypes';
 import {KeyboarDismiss} from '../../styles';
+import {Error, LoginForm} from '../../types';
 import {
   InputsContainer,
   LoginButton,
@@ -23,20 +25,19 @@ interface Props {
   navigation: NavigationStackProp<{}>;
 }
 
-interface FormValues {
-  email: string;
-  password: string;
-}
-
 interface State {
-  initialValues: FormValues;
+  initialValues: LoginForm;
+  loading: boolean;
+  error: Error;
 }
 
 class Login extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      initialValues: {email: '', password: ''}
+      initialValues: {email: '', password: ''},
+      loading: false,
+      error: {message: '', status: false}
     };
   }
 
@@ -45,7 +46,7 @@ class Login extends Component<Props, State> {
   };
 
   render() {
-    const {initialValues} = this.state;
+    const {initialValues, loading, error} = this.state;
     const {
       navigation: {navigate}
     } = this.props;
@@ -73,7 +74,7 @@ class Login extends Component<Props, State> {
                   onBlur={handleBlur('password')}
                   onChangeText={handleChange('password')}
                 />
-                <LoginButton dark onPress={handleSubmit}>
+                <LoginButton dark onPress={handleSubmit} loading={loading}>
                   Login
                 </LoginButton>
                 <RegisterButton onPress={() => navigate(Routes.REGISTER)}>
@@ -82,6 +83,17 @@ class Login extends Component<Props, State> {
               </InputsContainer>
             )}
           </Formik>
+          <Snackbar
+            visible={error.status}
+            onDismiss={() =>
+              this.setState({error: {status: false, message: ''}})
+            }
+            action={{
+              label: 'Ok',
+              onPress: () => {}
+            }}>
+            {error.message}
+          </Snackbar>
         </PageContainer>
       </KeyboarDismiss>
     );
