@@ -38,6 +38,8 @@ target 'Moviedb' do
 
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'MoviedbTests' do
     inherit! :search_paths
     # Pods for testing
