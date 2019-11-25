@@ -1,4 +1,4 @@
-import {DefaultTheme, Theme} from 'react-native-paper';
+import {Colors, DefaultTheme, Theme} from 'react-native-paper';
 
 interface CustomTheme extends Theme {
   colors: {
@@ -25,7 +25,7 @@ const theme: CustomTheme = {
     ...DefaultTheme.colors,
     primary: '#6C63FF',
     accent: '#FE9B95',
-    text: '#6C63FF',
+    text: Colors.grey800,
     background: '#F5F6F7',
     lightGray: '#e5e5e5'
   }
