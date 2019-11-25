@@ -4,10 +4,9 @@ import {
   NavigationStackOptions,
   NavigationStackProp
 } from 'react-navigation-stack';
-import reactotron from 'reactotron-react-native';
 import * as AuthAPI from '../../api/authentication';
 import Routes from '../../routes/routeTypes';
-import {ErrorMessage, KeyboarDismiss, ErrorTip} from '../../styles';
+import {ErrorMessage, ErrorTip, KeyboarDismiss} from '../../styles';
 import {Error, LoginForm} from '../../types';
 import {GetErrorMessage, LoginValidationSchema} from '../../utils/helpers';
 import {
@@ -47,7 +46,6 @@ class Login extends Component<Props, State> {
   };
 
   async submitForm(values: LoginForm) {
-    reactotron.log(values);
     const {
       navigation: {navigate}
     } = this.props;

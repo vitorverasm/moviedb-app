@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {ActivityIndicator, StatusBar, View} from 'react-native';
 import {NavigationStackProp} from 'react-navigation-stack';
 import {checkUserAuth} from '../../api/authentication';
+import Routes from '../../routes/routeTypes';
 
 interface Props {
   navigation: NavigationStackProp<{
@@ -24,7 +25,7 @@ class Loading extends Component<Props> {
       navigation: {navigate}
     } = this.props;
     checkUserAuth(user => {
-      navigate(user ? 'App' : 'Auth');
+      navigate(user ? Routes.HOME : Routes.LOGIN);
     });
   }
 

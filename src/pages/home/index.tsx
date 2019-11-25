@@ -7,6 +7,8 @@ import {
 import reactotron from 'reactotron-react-native';
 import {Container, Text} from '../../styles';
 import {Error} from '../../types';
+import {logout} from '../../api/authentication';
+import Routes from '../../routes/routeTypes';
 
 interface Props {
   navigation: NavigationStackProp<{}>;
@@ -18,6 +20,24 @@ interface State {
 }
 
 class Home extends Component<Props, State> {
+  static navigationOptions = ({
+    navigation
+  }: {
+    navigation: NavigationStackProp<{}>;
+  }): NavigationStackOptions => ({
+    headerRight: (
+      <IconButton
+        icon="exit-to-app"
+        size={24}
+        onPress={() => {
+          const {navigate} = navigation;
+          logout();
+          navigate(Routes.LOGIN);
+        }}
+      />
+    )
+  });
+
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -25,16 +45,6 @@ class Home extends Component<Props, State> {
       error: {message: '', status: false}
     };
   }
-
-  static navigationOptions: NavigationStackOptions = {
-    headerRight: (
-      <IconButton
-        icon="exit-to-app"
-        size={20}
-        onPress={() => console.log('Pressed')}
-      />
-    )
-  };
 
   render() {
     const {loading, error} = this.state;
