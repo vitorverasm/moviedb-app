@@ -8,11 +8,3 @@ export function login(form: LoginForm): Promise<RNFirebase.UserCredential> {
 export function logout(): Promise<void> {
   return firebase.auth().signOut();
 }
-
-export function checkUserAuth(
-  handler: (user: RNFirebase.User | null) => void
-): void {
-  firebase.auth().onAuthStateChanged(user => {
-    handler(user);
-  });
-}
