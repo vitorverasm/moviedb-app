@@ -57,9 +57,9 @@ class Register extends Component<Props, State> {
     super(props);
     this.state = {
       initialValues: {
-        email: 'vitorverasm@gmail.com',
-        password: '123456',
-        passwordConfirmation: '123456'
+        email: '',
+        password: '',
+        passwordConfirmation: ''
       },
       loading: false,
       error: {message: '', status: false}
