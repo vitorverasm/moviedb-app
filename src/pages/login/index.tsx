@@ -35,7 +35,7 @@ class Login extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      initialValues: {email: 'vitorverasm@gmail.com', password: '123456'},
+      initialValues: {email: '', password: ''},
       loading: false,
       error: {message: '', status: false}
     };
@@ -72,7 +72,7 @@ class Login extends Component<Props, State> {
         <PageContainer>
           <LogoContainer>
             <Logo source={require('../../assets/logo.png')} />
-            <LogoTitle>Movies App</LogoTitle>
+            <LogoTitle>App Filmes</LogoTitle>
           </LogoContainer>
           <Formik
             initialValues={initialValues}
@@ -88,7 +88,7 @@ class Login extends Component<Props, State> {
             }) => (
               <InputsContainer>
                 <UsernameInput
-                  label="Email"
+                  label="E-mail"
                   value={values.email}
                   onBlur={handleBlur('email')}
                   onChangeText={handleChange('email')}
@@ -98,7 +98,7 @@ class Login extends Component<Props, State> {
                   {errors.email !== undefined ? errors.email : ''}
                 </ErrorTip>
                 <PasswordInput
-                  label="Password"
+                  label="Senha"
                   value={values.password}
                   onBlur={handleBlur('password')}
                   onChangeText={handleChange('password')}
@@ -108,11 +108,16 @@ class Login extends Component<Props, State> {
                   visible={errors.password !== undefined && touched.password}>
                   {errors.password !== undefined ? errors.password : ''}
                 </ErrorTip>
-                <LoginButton dark onPress={handleSubmit} loading={loading}>
-                  Login
+                <LoginButton
+                  dark
+                  onPress={handleSubmit}
+                  loading={loading}
+                  disabled={loading}
+                  outlined>
+                  Entrar
                 </LoginButton>
                 <RegisterButton onPress={() => navigate(Routes.REGISTER)}>
-                  Create an account
+                  Criar uma conta
                 </RegisterButton>
               </InputsContainer>
             )}

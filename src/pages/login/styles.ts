@@ -1,7 +1,6 @@
 import {Headline} from 'react-native-paper';
 import styled from 'styled-components/native';
 import {Container, Input, CustomButton} from '../../styles';
-import theme from '../../styles/theme';
 
 export const Touchable = styled.TouchableOpacity`
   flex: 1;
@@ -38,12 +37,7 @@ export const PasswordInput = styled(Input).attrs(() => ({
   secureTextEntry: true
 }))``;
 
-export const LoginButton = styled(CustomButton).attrs(() => ({
-  mode: 'outlined',
-  uppercase: false
-}))`
-  border-color: ${theme.colors.primary};
-  border-width: 2px;
+export const LoginButton = styled(CustomButton)`
   margin-top: 10px;
 `;
 

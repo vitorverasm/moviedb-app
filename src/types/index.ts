@@ -16,6 +16,10 @@ export interface LoginForm {
   password: string;
 }
 
+export interface RegisterForm extends LoginForm {
+  passwordConfirmation: string;
+}
+
 export interface LoginAction extends Action {
   type: typeof LOGIN;
   payload: LoginForm;
