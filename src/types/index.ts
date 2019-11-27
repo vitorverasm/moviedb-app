@@ -35,5 +35,4 @@ export interface AuthenticationState {
 
 export interface RequestService {
   moviedbAPI: AxiosInstance;
-  firebaseAPI: AxiosInstance;
 }
