@@ -1,15 +1,19 @@
 import React from 'react';
 import {StatusBar} from 'react-native';
+import {Provider as PaperProvider} from 'react-native-paper';
 import Router from './routes';
-import {SafeAreaContainer} from './styles';
+import theme from './styles/theme';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaContainer>
-        <Router />
-      </SafeAreaContainer>
+      <PaperProvider theme={theme}>
+        <ErrorBoundary>
+          <Router />
+        </ErrorBoundary>
+      </PaperProvider>
     </>
   );
 };
