@@ -5,10 +5,11 @@ import {
   NavigationStackProp
 } from 'react-navigation-stack';
 import reactotron from 'reactotron-react-native';
-import {Container, Text} from '../../styles';
-import {Error} from '../../types';
 import {logout} from '../../api/authentication';
 import Routes from '../../routes/routeTypes';
+import {Container} from '../../styles';
+import {Error} from '../../types';
+import Teste from './teste';
 
 interface Props {
   navigation: NavigationStackProp<{}>;
@@ -51,7 +52,7 @@ class Home extends Component<Props, State> {
     reactotron.log({loading, error});
     return (
       <Container centered>
-        <Text>Home</Text>
+        <Teste />
       </Container>
     );
   }
