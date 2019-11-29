@@ -35,7 +35,7 @@ export type TrendingResponse = {
   page?: number;
   total_pages?: number;
   total_results?: number;
-  results?: MovieListResponseObject;
+  results?: MovieListResponseObject[];
   status_message?: string;
   status_code?: number;
 };
@@ -3706,7 +3706,7 @@ export const TrendingByMediaTypeAndTimeWindowGET = ({
 );
 
 export type UseTrendingByMediaTypeAndTimeWindowGETProps = Omit<
-  UseGetProps<void, void>,
+  UseGetProps<TrendingResponse, void>,
   'path'
 > & {media_type: string; time_window: TimeWindowEnum};
 
@@ -3716,7 +3716,10 @@ export const useTrendingByMediaTypeAndTimeWindowGET = ({
   time_window,
   ...props
 }: UseTrendingByMediaTypeAndTimeWindowGETProps) =>
-  useGet<void, void, void>(`/trending/${media_type}/${time_window}`, props);
+  useGet<TrendingResponse, void, void>(
+    `/trending/${media_type}/${time_window}`,
+    props
+  );
 
 export type CertificationMovieListGETProps = Omit<
   GetProps<void, void, void>,
