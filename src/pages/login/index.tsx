@@ -4,6 +4,7 @@ import {
   NavigationStackOptions,
   NavigationStackProp
 } from 'react-navigation-stack';
+import ENV from '../../../env.json';
 import * as AuthAPI from '../../api/authentication';
 import Routes from '../../routes/routeTypes';
 import {ErrorMessage, ErrorTip, KeyboarDismiss} from '../../styles';
@@ -72,7 +73,7 @@ class Login extends Component<Props, State> {
         <PageContainer>
           <LogoContainer>
             <Logo source={require('../../assets/logo.png')} />
-            <LogoTitle>App Filmes</LogoTitle>
+            <LogoTitle>{ENV.APP_NAME}</LogoTitle>
           </LogoContainer>
           <Formik
             initialValues={initialValues}

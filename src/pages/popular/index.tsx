@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
-import {IconButton} from 'react-native-paper';
 import {
   NavigationStackOptions,
   NavigationStackProp
 } from 'react-navigation-stack';
 import reactotron from 'reactotron-react-native';
+import ENV from '../../../env.json';
 import {logout} from '../../api/authentication';
 import Routes from '../../routes/routeTypes';
-import {Container} from '../../styles';
+import {Container, Text} from '../../styles';
 import {Error} from '../../types';
-import Teste from './teste';
+import {HeaderLogo, HeaderTitle, Logo, LogoutIcon} from './styles';
 
 interface Props {
   navigation: NavigationStackProp<{}>;
@@ -26,10 +26,15 @@ class Home extends Component<Props, State> {
   }: {
     navigation: NavigationStackProp<{}>;
   }): NavigationStackOptions => ({
+    headerTransparent: true,
+    headerLeft: (
+      <HeaderLogo>
+        <Logo source={require('../../assets/logo.png')} />
+        <HeaderTitle>{ENV.APP_NAME}</HeaderTitle>
+      </HeaderLogo>
+    ),
     headerRight: (
-      <IconButton
-        icon="exit-to-app"
-        size={24}
+      <LogoutIcon
         onPress={() => {
           const {navigate} = navigation;
           logout();
@@ -52,7 +57,7 @@ class Home extends Component<Props, State> {
     reactotron.log({loading, error});
     return (
       <Container centered>
-        <Teste />
+        <Text>Popular</Text>
       </Container>
     );
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import {StatusBar} from 'react-native';
 import {Provider as PaperProvider} from 'react-native-paper';
 import {RestfulProvider} from 'restful-react';
+import ENV from '../env.json';
 import ErrorBoundary from './components/ErrorBoundary';
 import Router from './routes';
 import theme from './styles/theme';
@@ -13,8 +14,8 @@ const App = () => {
       <PaperProvider theme={theme}>
         <ErrorBoundary>
           <RestfulProvider
-            queryParams={{api_key: '276d77b1df9d3d083b6b6847042a4fec'}}
-            base="https://api.themoviedb.org/3">
+            queryParams={{api_key: ENV.MOVIEDB_API_KEY}}
+            base={ENV.MOVIEDB_API_BASE_URL}>
             <Router />
           </RestfulProvider>
         </ErrorBoundary>
