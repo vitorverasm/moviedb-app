@@ -87,6 +87,7 @@ class Home extends Component<Props, State> {
                 label={item.label}
                 onPress={() => this.onPressItem(item)}
                 selected={item.id === itemPressed}
+                disabled={loading}
               />
             )}
           />
