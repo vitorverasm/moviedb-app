@@ -34,3 +34,7 @@ export const SectionListContainer = styled(Container)`
   margin-top: 100px;
   padding: 15px;
 `;
+
+export const SectionContainer = styled(Container)`
+  flex: 3;
+`;

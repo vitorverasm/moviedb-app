@@ -1,6 +1,6 @@
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import Favorites from '../pages/favorites';
+import Favorites from '../pages/home/favorites';
 import Loading from '../pages/loading';
 import Login from '../pages/login';
 import Popular from '../pages/home';

@@ -5,8 +5,9 @@ const sections: Section[] = [
   {
     id: '1',
     label: 'Populares',
-    backgroundImage: 'popular.png',
-    icon: '',
+    backgroundImageDark: require(`../assets/sections/popular.png`),
+    backgroundImageLight: require(`../assets/sections/popular-light.png`),
+    icon: 'trending-up',
     onPress: () => {
       reactotron.log(sections[0].label);
     }
@@ -14,8 +15,9 @@ const sections: Section[] = [
   {
     id: '2',
     label: 'Favoritos',
-    backgroundImage: 'favorites.png',
-    icon: '',
+    backgroundImageDark: require(`../assets/sections/favorites.png`),
+    backgroundImageLight: require(`../assets/sections/favorites-light.png`),
+    icon: 'star-outline',
     onPress: () => {
       reactotron.log(sections[1].label);
     }
@@ -23,7 +25,8 @@ const sections: Section[] = [
   {
     id: '3',
     label: 'Suspense',
-    backgroundImage: 'horror.png',
+    backgroundImageDark: require(`../assets/sections/horror.png`),
+    backgroundImageLight: require(`../assets/sections/horror-light.png`),
     icon: '',
     onPress: () => {
       reactotron.log(sections[2].label);
@@ -32,7 +35,8 @@ const sections: Section[] = [
   {
     id: '4',
     label: 'Aventura',
-    backgroundImage: 'adventure.png',
+    backgroundImageDark: require(`../assets/sections/adventure.png`),
+    backgroundImageLight: require(`../assets/sections/adventure-light.png`),
     icon: '',
     onPress: () => {
       reactotron.log(sections[3].label);
@@ -41,7 +45,8 @@ const sections: Section[] = [
   {
     id: '5',
     label: 'Sci-fi',
-    backgroundImage: 'sci-fi.png',
+    backgroundImageDark: require(`../assets/sections/sci-fi.png`),
+    backgroundImageLight: require(`../assets/sections/sci-fi-light.png`),
     icon: '',
     onPress: () => {
       reactotron.log(sections[4].label);
@@ -50,7 +55,8 @@ const sections: Section[] = [
   {
     id: '6',
     label: 'Super-heróis',
-    backgroundImage: 'superheroes.png',
+    backgroundImageDark: require(`../assets/sections/superheroes.png`),
+    backgroundImageLight: require(`../assets/sections/superheroes-light.png`),
     icon: '',
     onPress: () => {
       reactotron.log(sections[5].label);

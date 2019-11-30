@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, ReactNode} from 'react';
 import {FlatList} from 'react-native';
 import {
   NavigationStackOptions,
@@ -12,11 +12,14 @@ import Routes from '../../routes/routeTypes';
 import {Container} from '../../styles';
 import {Error, Section} from '../../types';
 import Sections from '../../utils/sections';
+import Favorites from './favorites';
+import Popular from './popular';
 import {
   HeaderLogo,
   HeaderTitle,
   Logo,
   LogoutIcon,
+  SectionContainer,
   SectionListContainer
 } from './styles';
 
@@ -25,7 +28,7 @@ interface Props {
 }
 
 interface State {
-  itemPressed: string;
+  currentSectionID: string;
   loading: boolean;
   error: Error;
 }
@@ -57,22 +60,33 @@ class Home extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      itemPressed: '1',
+      currentSectionID: '1',
       loading: false,
       error: {message: '', status: false}
     };
   }
 
   onPressItem(item: Section): void {
-    const {itemPressed} = this.state;
-    if (item.id !== itemPressed) {
+    const {currentSectionID} = this.state;
+    if (item.id !== currentSectionID) {
       item.onPress();
-      this.setState({itemPressed: item.id});
+      this.setState({currentSectionID: item.id});
+    }
+  }
+
+  renderSection(): ReactNode {
+    const {currentSectionID} = this.state;
+    switch (currentSectionID) {
+      case '1':
+        return <Popular />;
+
+      default:
+        return <Favorites />;
     }
   }
 
   render() {
-    const {loading, error, itemPressed} = this.state;
+    const {loading, error, currentSectionID} = this.state;
     reactotron.log({loading, error});
     return (
       <Container centered>
@@ -85,13 +99,16 @@ class Home extends Component<Props, State> {
               <Card
                 id={item.id}
                 label={item.label}
+                backgroundImageDark={item.backgroundImageDark}
+                backgroundImageLight={item.backgroundImageLight}
                 onPress={() => this.onPressItem(item)}
-                selected={item.id === itemPressed}
+                selected={item.id === currentSectionID}
                 disabled={loading}
               />
             )}
           />
         </SectionListContainer>
+        <SectionContainer>{this.renderSection()}</SectionContainer>
       </Container>
     );
   }

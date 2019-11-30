@@ -62,3 +62,8 @@ export const CardTitle = styled(Subheading)<{selected?: boolean}>`
   font-size: 12px;
   color: ${props => (props.selected ? '#FFF' : theme.colors.primary)};
 `;
+
+export const CardLogo = styled.Image`
+  width: 60px;
+  height: 60px;
+`;

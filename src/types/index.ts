@@ -1,4 +1,5 @@
 import {AxiosInstance} from 'axios';
+import {ImageSourcePropType} from 'react-native';
 import {LOGIN, LOGOUT} from '../redux/actions/actionTypes';
 
 export interface Action {
@@ -41,6 +42,7 @@ export interface Section {
   id: string;
   label: string;
   icon?: string;
-  backgroundImage?: string;
+  backgroundImageDark: ImageSourcePropType;
+  backgroundImageLight: ImageSourcePropType;
   onPress: () => void;
 }

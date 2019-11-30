@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Text} from '../../styles';
+import {Container, Text} from '../../../styles';
 
 const Favorites = () => {
   return (
