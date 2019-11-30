@@ -46,3 +46,9 @@ export interface Section {
   backgroundImageLight: ImageSourcePropType;
   onPress: () => void;
 }
+
+export interface SectionProps<TResponse> {
+  data?: TResponse;
+  loading?: boolean;
+  error?: Error;
+}

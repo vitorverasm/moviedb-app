@@ -79,7 +79,6 @@ class Home extends Component<Props, State> {
     switch (currentSectionID) {
       case '1':
         return <Popular />;
-
       default:
         return <Favorites />;
     }
@@ -89,7 +88,7 @@ class Home extends Component<Props, State> {
     const {loading, error, currentSectionID} = this.state;
     reactotron.log({loading, error});
     return (
-      <Container centered>
+      <Container>
         <SectionListContainer>
           <FlatList
             data={Sections}

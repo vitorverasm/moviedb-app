@@ -31,10 +31,12 @@ export const LogoutIcon = styled(IconButton).attrs(() => ({
 `;
 
 export const SectionListContainer = styled(Container)`
-  margin-top: 100px;
+  margin-top: 70px;
   padding: 15px;
 `;
 
 export const SectionContainer = styled(Container)`
-  flex: 3;
+  flex: 4;
+  margin-horizontal: 20px;
+  padding-bottom: 5px;
 `;

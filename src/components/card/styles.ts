@@ -6,8 +6,8 @@ import theme from '../../styles/theme';
 export const CardShape = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: 1
 }))`
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   border-radius: 6px;
   margin: 5px;
 `;
@@ -59,7 +59,7 @@ export const CardContainer = styled(CardShape).attrs(
 
 export const CardTitle = styled(Subheading)<{selected?: boolean}>`
   font-weight: bold;
-  font-size: 12px;
+  font-size: 11px;
   color: ${props => (props.selected ? '#FFF' : theme.colors.primary)};
 `;
 
