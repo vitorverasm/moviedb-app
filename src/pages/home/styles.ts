@@ -29,3 +29,8 @@ export const LogoutIcon = styled(IconButton).attrs(() => ({
   margin-right: 10px;
   margin-top: 25px;
 `;
+
+export const SectionListContainer = styled(Container)`
+  margin-top: 100px;
+  padding: 15px;
+`;

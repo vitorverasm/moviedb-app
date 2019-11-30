@@ -3,7 +3,7 @@ import {StatusBar} from 'react-native';
 import {Provider as PaperProvider} from 'react-native-paper';
 import {RestfulProvider} from 'restful-react';
 import ENV from '../env.json';
-import ErrorBoundary from './components/ErrorBoundary';
+import ErrorBoundary from './components/error-boundary';
 import Router from './routes';
 import theme from './styles/theme';
 

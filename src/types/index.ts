@@ -36,3 +36,11 @@ export interface AuthenticationState {
 export interface RequestService {
   moviedbAPI: AxiosInstance;
 }
+
+export interface Section {
+  id: string;
+  label: string;
+  icon?: string;
+  backgroundImage?: string;
+  onPress: () => void;
+}

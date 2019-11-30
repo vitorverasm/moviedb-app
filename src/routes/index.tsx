@@ -3,7 +3,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import Favorites from '../pages/favorites';
 import Loading from '../pages/loading';
 import Login from '../pages/login';
-import Popular from '../pages/popular';
+import Popular from '../pages/home';
 import Register from '../pages/register';
 import Routes from './routeTypes';
 
