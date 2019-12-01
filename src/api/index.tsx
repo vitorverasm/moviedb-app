@@ -1067,18 +1067,35 @@ export type UseMovieNowPlayingGETProps = Omit<UseGetProps<void, void>, 'path'>;
 export const useMovieNowPlayingGET = (props: UseMovieNowPlayingGETProps) =>
   useGet<void, void, void>(`/movie/now_playing`, props);
 
-export type MoviePopularGETProps = Omit<GetProps<void, void, void>, 'path'>;
+export type UseMoviePopularGETParams = {
+  language?: string;
+  page?: number;
+};
+
+export type MoviePopularGETProps = Omit<
+  GetProps<TrendingResponse, void, UseMoviePopularGETParams>,
+  'path'
+>;
 
 // MoviePopular_GET
 export const MoviePopularGET = (props: MoviePopularGETProps) => (
-  <Get<void, void, void> path={`/movie/popular`} {...props} />
+  <Get<TrendingResponse, void, UseMoviePopularGETParams>
+    path={`/movie/popular`}
+    {...props}
+  />
 );
 
-export type UseMoviePopularGETProps = Omit<UseGetProps<void, void>, 'path'>;
+export type UseMoviePopularGETProps = Omit<
+  UseGetProps<TrendingResponse, UseMoviePopularGETParams>,
+  'path'
+>;
 
 // MoviePopular_GET
 export const useMoviePopularGET = (props: UseMoviePopularGETProps) =>
-  useGet<void, void, void>(`/movie/popular`, props);
+  useGet<TrendingResponse, void, UseMoviePopularGETParams>(
+    `/movie/popular`,
+    props
+  );
 
 export type MovieTopRatedGETProps = Omit<GetProps<void, void, void>, 'path'>;
 

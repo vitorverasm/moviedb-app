@@ -16,6 +16,7 @@ interface CustomTheme extends Theme {
     notification: string;
     lightGray: string;
     black: string;
+    white: string;
   };
 }
 
@@ -29,7 +30,8 @@ const theme: CustomTheme = {
     text: Colors.grey800,
     background: '#F5F6F7',
     lightGray: '#e5e5e5',
-    black: Colors.grey800
+    black: Colors.grey800,
+    white: '#FFF'
   }
 };
 

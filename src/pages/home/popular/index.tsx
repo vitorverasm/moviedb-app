@@ -1,24 +1,24 @@
 import React, {FC, useState} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, ActivityIndicator} from 'react-native';
 import reactotron from 'reactotron-react-native';
-import {useTrendingByMediaTypeAndTimeWindowGET} from '../../../api';
+import {useMoviePopularGET, MovieListResponseObject} from '../../../api';
+import {Text} from '../../../styles';
 import {
+  ButtonsContainer,
+  ListContainer,
   NextButton,
   PreviousButton,
   SectionPageContainer,
-  ButtonsContainer,
-  ListContainer
+  LoadingText
 } from './styles';
-import {Text} from '../../../styles';
+import MovieCard from '../../../components/movie-card';
+import theme from '../../../styles/theme';
 
 const Popular: FC = () => {
   const [page, setPage] = useState(1);
 
-  const {data, error, loading} = useTrendingByMediaTypeAndTimeWindowGET({
-    media_type: 'movie',
-    time_window: 'week',
+  const {data, error, loading} = useMoviePopularGET({
     queryParams: {
-      language: 'pt-BR',
       page
     }
   });
@@ -28,7 +28,8 @@ const Popular: FC = () => {
   if (loading) {
     return (
       <SectionPageContainer centered>
-        <Text>Loading</Text>
+        <ActivityIndicator size="large" color={theme.colors.primary} />
+        <LoadingText>Loading</LoadingText>
       </SectionPageContainer>
     );
   }
@@ -40,7 +41,14 @@ const Popular: FC = () => {
           <FlatList
             data={data.results}
             showsVerticalScrollIndicator={false}
-            renderItem={({item}) => <Text>{item.title}</Text>}
+            numColumns={3}
+            renderItem={({item}: {item: MovieListResponseObject}) => (
+              <MovieCard
+                id={item.id}
+                posterPath={item.poster_path}
+                loading={loading}
+              />
+            )}
           />
         </ListContainer>
         <ButtonsContainer>

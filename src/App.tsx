@@ -10,7 +10,7 @@ import theme from './styles/theme';
 const App = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="dark-content" backgroundColor={theme.colors.white} />
       <PaperProvider theme={theme}>
         <ErrorBoundary>
           <RestfulProvider
