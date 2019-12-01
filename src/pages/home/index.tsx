@@ -1,22 +1,35 @@
-import React, {Component} from 'react';
-import {IconButton} from 'react-native-paper';
+import React, {Component, ReactNode} from 'react';
+import {FlatList} from 'react-native';
 import {
   NavigationStackOptions,
   NavigationStackProp
 } from 'react-navigation-stack';
-import reactotron from 'reactotron-react-native';
-import {Container, Text} from '../../styles';
-import {Error} from '../../types';
+import ENV from '../../../env.json';
 import {logout} from '../../api/authentication';
+import Card from '../../components/card';
 import Routes from '../../routes/routeTypes';
+import {Container} from '../../styles';
+import {Section} from '../../types';
+import Sections from '../../utils/sections';
+import Favorites from './favorites';
+import Popular from './popular';
+import SectionByParams from './section-by-params';
+import {
+  HeaderLogo,
+  HeaderTitle,
+  Logo,
+  LogoutIcon,
+  SectionContainer,
+  SectionListContainer
+} from './styles';
 
 interface Props {
   navigation: NavigationStackProp<{}>;
 }
 
 interface State {
+  currentSection: Section;
   loading: boolean;
-  error: Error;
 }
 
 class Home extends Component<Props, State> {
@@ -25,10 +38,15 @@ class Home extends Component<Props, State> {
   }: {
     navigation: NavigationStackProp<{}>;
   }): NavigationStackOptions => ({
+    headerTransparent: true,
+    headerLeft: (
+      <HeaderLogo>
+        <Logo source={require('../../assets/logo.png')} />
+        <HeaderTitle>{ENV.APP_NAME}</HeaderTitle>
+      </HeaderLogo>
+    ),
     headerRight: (
-      <IconButton
-        icon="exit-to-app"
-        size={24}
+      <LogoutIcon
         onPress={() => {
           const {navigate} = navigation;
           logout();
@@ -41,17 +59,60 @@ class Home extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      loading: false,
-      error: {message: '', status: false}
+      currentSection: Sections[0],
+      loading: false
     };
   }
 
+  onPressItem(item: Section): void {
+    const {currentSection} = this.state;
+    if (item.id !== currentSection.id) {
+      item.onPress();
+      this.setState({currentSection: item});
+    }
+  }
+
+  renderSection(): ReactNode {
+    const {currentSection} = this.state;
+    switch (currentSection.id) {
+      case '1':
+        return <Popular />;
+      case '2':
+        return <Favorites />;
+      default:
+        return (
+          <SectionByParams
+            genreID={currentSection.genreID}
+            keywords={currentSection.keywords}
+            excludeKeywords={currentSection.excludeKeywords}
+          />
+        );
+    }
+  }
+
   render() {
-    const {loading, error} = this.state;
-    reactotron.log({loading, error});
+    const {loading, currentSection} = this.state;
     return (
-      <Container centered>
-        <Text>Home</Text>
+      <Container>
+        <SectionListContainer>
+          <FlatList
+            data={Sections}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            renderItem={({item}) => (
+              <Card
+                id={item.id}
+                label={item.label}
+                backgroundImageDark={item.backgroundImageDark}
+                backgroundImageLight={item.backgroundImageLight}
+                onPress={() => this.onPressItem(item)}
+                selected={item.id === currentSection.id}
+                disabled={loading}
+              />
+            )}
+          />
+        </SectionListContainer>
+        <SectionContainer>{this.renderSection()}</SectionContainer>
       </Container>
     );
   }

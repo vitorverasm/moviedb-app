@@ -11,7 +11,8 @@ module.exports = {
     'react-native/no-inline-styles': 'off',
     'import/no-extraneous-dependencies': ['error', {devDependencies: true}],
     'no-console': 'off',
-    'global-require': 'off'
+    'global-require': 'off',
+    'eslint-comments/no-unlimited-disable': 'off'
   },
   globals: {
     HermesInternal: true

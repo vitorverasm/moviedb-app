@@ -1,4 +1,5 @@
 import {AxiosInstance} from 'axios';
+import {ImageSourcePropType} from 'react-native';
 import {LOGIN, LOGOUT} from '../redux/actions/actionTypes';
 
 export interface Action {
@@ -35,5 +36,22 @@ export interface AuthenticationState {
 
 export interface RequestService {
   moviedbAPI: AxiosInstance;
-  firebaseAPI: AxiosInstance;
+}
+
+export interface Section {
+  id: string;
+  label: string;
+  icon?: string;
+  genreID?: string;
+  keywords?: string;
+  excludeKeywords?: string;
+  backgroundImageDark: ImageSourcePropType;
+  backgroundImageLight: ImageSourcePropType;
+  onPress: () => void;
+}
+
+export interface SectionProps<TResponse> {
+  data?: TResponse;
+  loading?: boolean;
+  error?: Error;
 }
