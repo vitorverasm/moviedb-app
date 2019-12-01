@@ -2,7 +2,9 @@ enum Routes {
   HOME = 'HOME',
   LOGIN = 'LOGIN',
   REGISTER = 'REGISTER',
-  FAVORITES = 'FAVORITES'
+  FAVORITES = 'FAVORITES',
+  MOVIE_DETAILS = 'MOVIE_DETAILS',
+  MOVIE_VIDEOS = 'MOVIE_VIDEOS'
 }
 
 export default Routes;

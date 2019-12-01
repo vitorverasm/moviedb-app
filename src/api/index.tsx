@@ -40,6 +40,88 @@ export type ResponseSchema = {
   status_code?: number;
 };
 
+export type Genre = {
+  id?: number;
+  name?: string;
+};
+
+export type ProductionConpany = {
+  name?: string;
+  id?: number;
+  logo_path?: string | null;
+  origin_country?: string;
+};
+
+export type ProductionCountry = {
+  iso_3166_1?: string;
+  name?: string;
+};
+
+export type SpokenLanguage = {
+  iso_639_1?: string;
+  name?: string;
+};
+
+export type StatusEnum =
+  | 'Rumored'
+  | 'Planned'
+  | 'In Production'
+  | 'Post Production'
+  | 'Released'
+  | 'Canceled';
+
+export type ResponseDetailsSchema = {
+  adult?: boolean;
+  backdrop_path?: string | null;
+  belongs_to_collection?: null | object;
+  budget?: number;
+  genres: Genre[] | null;
+  homepage?: string | null;
+  id?: number;
+  imdb_id?: string | null;
+  original_language?: string;
+  original_title?: string;
+  overview?: string | null;
+  popularity?: number;
+  poster_path?: string | null;
+  production_companies?: ProductionConpany[];
+  production_countries?: ProductionCountry[];
+  release_date?: string;
+  revenue?: number;
+  runtime?: number | null;
+  spoken_languages?: SpokenLanguage[];
+  status?: StatusEnum;
+  tagline?: string | null;
+  title?: string;
+  video?: boolean;
+  vote_average?: number;
+  vote_count?: number;
+};
+
+export type VideoType =
+  | 'Trailer'
+  | 'Teaser'
+  | 'Clip'
+  | 'Featurette'
+  | 'Behind the Scenes'
+  | 'Bloopers';
+
+export type VideoResult = {
+  id?: string;
+  iso_639_1?: string;
+  iso_3166_1?: string;
+  key?: string;
+  name?: string;
+  site?: string;
+  size?: number;
+  type?: VideoType;
+};
+
+export type ResponseVideosSchema = {
+  id?: number;
+  results?: VideoResult[];
+};
+
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 export type SortByEnum =
@@ -945,6 +1027,7 @@ export const useMovieAccountStatesByMovieIdGET = ({
 
 export interface MovieVideosByMovieIdGETQueryParams {
   api_key?: string;
+  language?: string;
 }
 
 export type MovieVideosByMovieIdGETProps = Omit<
@@ -964,7 +1047,7 @@ export const MovieVideosByMovieIdGET = ({
 );
 
 export type UseMovieVideosByMovieIdGETProps = Omit<
-  UseGetProps<void, MovieVideosByMovieIdGETQueryParams>,
+  UseGetProps<ResponseVideosSchema, MovieVideosByMovieIdGETQueryParams>,
   'path'
 > & {movie_id: number};
 
@@ -973,7 +1056,7 @@ export const useMovieVideosByMovieIdGET = ({
   movie_id,
   ...props
 }: UseMovieVideosByMovieIdGETProps) =>
-  useGet<void, void, MovieVideosByMovieIdGETQueryParams>(
+  useGet<ResponseVideosSchema, void, MovieVideosByMovieIdGETQueryParams>(
     `/movie/${movie_id}/videos`,
     props
   );
@@ -1017,7 +1100,7 @@ export const MovieByMovieIdGET = ({
 );
 
 export type UseMovieByMovieIdGETProps = Omit<
-  UseGetProps<void, void>,
+  UseGetProps<ResponseDetailsSchema, {language?: string}>,
   'path'
 > & {movie_id: number};
 
@@ -1026,7 +1109,10 @@ export const useMovieByMovieIdGET = ({
   movie_id,
   ...props
 }: UseMovieByMovieIdGETProps) =>
-  useGet<void, void, void>(`/movie/${movie_id}`, props);
+  useGet<ResponseDetailsSchema, void, {language?: string}>(
+    `/movie/${movie_id}`,
+    props
+  );
 
 export type MovieChangesGETProps = Omit<GetProps<void, void, void>, 'path'>;
 

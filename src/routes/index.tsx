@@ -1,16 +1,22 @@
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import Favorites from '../pages/home/favorites';
+import Popular from '../pages/home';
 import Loading from '../pages/loading';
 import Login from '../pages/login';
-import Popular from '../pages/home';
+import MovieDetails from '../pages/movie-details';
+import MovieDetailsVideo from '../pages/movie-details/videos';
 import Register from '../pages/register';
 import Routes from './routeTypes';
 
-const AppStack = createStackNavigator({
-  [Routes.HOME]: Popular,
-  [Routes.FAVORITES]: Favorites
-});
+const AppStack = createStackNavigator(
+  {
+    [Routes.HOME]: Popular,
+    [Routes.MOVIE_DETAILS]: MovieDetails,
+    [Routes.MOVIE_VIDEOS]: MovieDetailsVideo
+  },
+  {initialRouteName: Routes.HOME}
+);
+
 const AuthStack = createStackNavigator(
   {
     [Routes.LOGIN]: Login,
