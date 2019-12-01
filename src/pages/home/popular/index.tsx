@@ -1,20 +1,25 @@
 import React, {FC, useState} from 'react';
-import {FlatList, ActivityIndicator} from 'react-native';
+import {ActivityIndicator, FlatList} from 'react-native';
+import {NavigationStackProp} from 'react-navigation-stack';
 import reactotron from 'reactotron-react-native';
-import {useMoviePopularGET, MovieListResponseObject} from '../../../api';
+import {MovieListResponseObject, useMoviePopularGET} from '../../../api';
+import MovieCard from '../../../components/movie-card';
 import {Text} from '../../../styles';
+import theme from '../../../styles/theme';
 import {
   ButtonsContainer,
   ListContainer,
+  LoadingText,
   NextButton,
   PreviousButton,
-  SectionPageContainer,
-  LoadingText
+  SectionPageContainer
 } from '../styles';
-import MovieCard from '../../../components/movie-card';
-import theme from '../../../styles/theme';
 
-const Popular: FC = () => {
+interface PopularProps {
+  navigation: NavigationStackProp<{}>;
+}
+
+const Popular: FC<PopularProps> = ({navigation}: PopularProps) => {
   const [page, setPage] = useState(1);
 
   const {data, error, loading} = useMoviePopularGET({
@@ -45,6 +50,7 @@ const Popular: FC = () => {
             renderItem={({item}: {item: MovieListResponseObject}) => (
               <MovieCard
                 id={item.id}
+                navigation={navigation}
                 posterPath={item.poster_path}
                 loading={loading}
               />

@@ -74,14 +74,16 @@ class Home extends Component<Props, State> {
 
   renderSection(): ReactNode {
     const {currentSection} = this.state;
+    const {navigation} = this.props;
     switch (currentSection.id) {
       case '1':
-        return <Popular />;
+        return <Popular navigation={navigation} />;
       case '2':
         return <Favorites />;
       default:
         return (
           <SectionByParams
+            navigation={navigation}
             genreID={currentSection.genreID}
             keywords={currentSection.keywords}
             excludeKeywords={currentSection.excludeKeywords}
