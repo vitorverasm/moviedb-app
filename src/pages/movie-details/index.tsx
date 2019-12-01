@@ -128,7 +128,7 @@ const MovieDetails: MovieDetailsInterface = ({
                 showsHorizontalScrollIndicator={false}
                 data={data.genres}
                 renderItem={({item}: {item: Genre}) => (
-                  <DetailsButton key={item.id} disabled>
+                  <DetailsButton key={`${item.id}`} disabled>
                     {item.name}
                   </DetailsButton>
                 )}

@@ -110,3 +110,8 @@ export const DetailsButton = styled(CustomButton).attrs(() => ({
     props.disabled ? theme.colors.lightGray : theme.colors.accent};
   margin: 5px;
 `;
+
+export const VideoContainer = styled(Container)`
+  flex: 4;
+  margin-horizontal: 15px;
+`;

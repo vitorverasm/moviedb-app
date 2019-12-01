@@ -1,14 +1,23 @@
 import React, {FC} from 'react';
 import {StatusBar} from 'react-native';
+// @ts-ignore
+import YouTube from 'react-native-youtube';
 import {NavigationScreenProp, NavigationState} from 'react-navigation';
 import {
   NavigationStackOptions,
   NavigationStackProp
 } from 'react-navigation-stack';
 import reactotron from 'reactotron-react-native';
+import ENV from '../../../../env.json';
 import {useMovieVideosByMovieIdGET} from '../../../api';
 import theme from '../../../styles/theme';
-import {LogoContainer, LogoShimmer, PageContainer, PageTitle} from '../styles';
+import {
+  LogoContainer,
+  LogoShimmer,
+  PageContainer,
+  PageTitle,
+  VideoContainer
+} from '../styles';
 
 interface Navigation
   extends NavigationScreenProp<
@@ -56,13 +65,22 @@ const MovieDetailsVideo: MovieDetailsVideoInterface = ({
     );
   }
 
-  if (data) {
+  if (data && data.results && data.results.length > 0) {
     return (
       <PageContainer>
         <StatusBar
           barStyle="dark-content"
           backgroundColor={theme.colors.white}
         />
+        <PageContainer />
+        <VideoContainer>
+          <YouTube
+            apiKey={ENV.YOUTUBE_API_KEY}
+            style={{flex: 1}}
+            videoIds={data.results.map(item => item.key)}
+          />
+        </VideoContainer>
+        <PageContainer />
       </PageContainer>
     );
   }
@@ -72,7 +90,7 @@ const MovieDetailsVideo: MovieDetailsVideoInterface = ({
         barStyle="light-content"
         backgroundColor={theme.colors.black}
       />
-      <PageTitle>Falha ao carregar informações</PageTitle>
+      <PageTitle>Sem vídeos promocionais</PageTitle>
     </PageContainer>
   );
 };
