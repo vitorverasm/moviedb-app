@@ -11,13 +11,7 @@ import reactotron from 'reactotron-react-native';
 import ENV from '../../../../env.json';
 import {useMovieVideosByMovieIdGET} from '../../../api';
 import theme from '../../../styles/theme';
-import {
-  LogoContainer,
-  LogoShimmer,
-  PageContainer,
-  PageTitle,
-  VideoContainer
-} from '../styles';
+import {LogoShimmer, PageContainer, PageTitle, VideoContainer} from '../styles';
 
 interface Navigation
   extends NavigationScreenProp<
@@ -56,11 +50,11 @@ const MovieDetailsVideo: MovieDetailsVideoInterface = ({
           barStyle="dark-content"
           backgroundColor={theme.colors.white}
         />
-        <LogoContainer>
+        <PageContainer />
+        <VideoContainer centered>
           <LogoShimmer />
-          <LogoShimmer />
-          <LogoShimmer />
-        </LogoContainer>
+        </VideoContainer>
+        <PageContainer />
       </PageContainer>
     );
   }
