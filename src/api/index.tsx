@@ -75,7 +75,7 @@ export type ResponseDetailsSchema = {
   backdrop_path?: string | null;
   belongs_to_collection?: null | object;
   budget?: number;
-  genres?: Genre[];
+  genres: Genre[] | null;
   homepage?: string | null;
   id?: number;
   imdb_id?: string | null;

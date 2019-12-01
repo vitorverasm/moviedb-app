@@ -33,6 +33,7 @@ const SectionByParams: FC<SectionByGenreProps> = ({
   const {data, error, loading} = useDiscoverMovieGET({
     queryParams: {
       page,
+      language: 'pt-BR',
       with_genres: genreID,
       with_keywords: keywords,
       without_keywords: excludeKeywords

@@ -1,13 +1,33 @@
 import React, {FC} from 'react';
-import {NavigationScreenProp, NavigationState} from 'react-navigation';
+import {StatusBar} from 'react-native';
+import {
+  NavigationScreenProp,
+  NavigationState,
+  FlatList
+} from 'react-navigation';
 import {
   NavigationStackOptions,
   NavigationStackProp
 } from 'react-navigation-stack';
-import reactotron from 'reactotron-react-native';
-import {useMovieByMovieIdGET} from '../../api';
+import {useMovieByMovieIdGET, Genre} from '../../api';
 import theme from '../../styles/theme';
-import {PageContainer, PageTitle} from './styles';
+import {
+  Badges,
+  BadgesRow,
+  BadgesShimmer,
+  InfoContainer,
+  Logo,
+  LogoContainer,
+  LogoShimmer,
+  PageContainer,
+  PageTitle,
+  ContentBody,
+  ContentLabel,
+  Content,
+  ContentText,
+  DetailsButton,
+  TextShimmer
+} from './styles';
 
 interface Navigation
   extends NavigationScreenProp<
@@ -30,16 +50,102 @@ interface MovieDetailsInterface extends FC<MovieDetailsProps> {
 const MovieDetails: MovieDetailsInterface = ({
   navigation
 }: MovieDetailsProps) => {
-  const {data, error, loading} = useMovieByMovieIdGET({
+  const {data, loading} = useMovieByMovieIdGET({
     movie_id: navigation.getParam('movieID', null),
     queryParams: {
       language: 'pt-BR'
     }
   });
-  reactotron.log({data, error, loading});
+
+  if (loading) {
+    return (
+      <PageContainer>
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor={theme.colors.white}
+        />
+        <LogoContainer>
+          <LogoShimmer />
+        </LogoContainer>
+        <InfoContainer>
+          <BadgesRow>
+            <BadgesShimmer />
+            <BadgesShimmer />
+            <BadgesShimmer />
+          </BadgesRow>
+          <Content loading>
+            <ContentBody>
+              <TextShimmer widthPercentage="90" />
+              <TextShimmer widthPercentage="50" />
+              <TextShimmer widthPercentage="75" />
+            </ContentBody>
+          </Content>
+        </InfoContainer>
+      </PageContainer>
+    );
+  }
+
+  if (data) {
+    return (
+      <PageContainer>
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor={theme.colors.white}
+        />
+        <LogoContainer>
+          <Logo
+            source={{
+              uri: `https://image.tmdb.org/t/p/original/${data.backdrop_path}`
+            }}
+          />
+        </LogoContainer>
+        <InfoContainer>
+          <BadgesRow>
+            <Badges icon="star-outline" disabled>
+              {data.vote_average}
+            </Badges>
+            <Badges icon="timelapse" disabled>{`${data.runtime} min`}</Badges>
+            <Badges icon="heart-outline">Favoritar</Badges>
+          </BadgesRow>
+          <Content>
+            <ContentBody>
+              <DetailsButton icon="play-circle-outline" onPress={() => {}}>
+                Ver vídeos
+              </DetailsButton>
+            </ContentBody>
+            <ContentBody>
+              <ContentLabel>Gêneros:</ContentLabel>
+              <FlatList
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                data={data.genres}
+                renderItem={({item}: {item: Genre}) => (
+                  <DetailsButton key={item.id} disabled>
+                    {item.name}
+                  </DetailsButton>
+                )}
+              />
+            </ContentBody>
+            <ContentBody>
+              <ContentLabel>Visão geral:</ContentLabel>
+              <ContentText>{data.overview}</ContentText>
+            </ContentBody>
+            <ContentBody>
+              <ContentLabel>Data de lançamento:</ContentLabel>
+              <ContentText>{data.release_date}</ContentText>
+            </ContentBody>
+          </Content>
+        </InfoContainer>
+      </PageContainer>
+    );
+  }
   return (
     <PageContainer centered>
-      <PageTitle>{navigation.getParam('movieID', 'Vazio')}</PageTitle>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={theme.colors.black}
+      />
+      <PageTitle>Falha ao carregar informações</PageTitle>
     </PageContainer>
   );
 };
@@ -49,10 +155,13 @@ MovieDetails.navigationOptions = ({
 }: {
   navigation: Navigation;
 }): NavigationStackOptions => ({
-  title: navigation.getParam('movieTitle', ''),
-  headerTintColor: theme.colors.primary,
+  title: navigation.getParam('movieTitle', 'Título'),
+  headerTintColor: theme.colors.black,
   headerTitleStyle: {
     fontWeight: 'bold'
+  },
+  headerStyle: {
+    backgroundColor: theme.colors.white
   }
 });
 

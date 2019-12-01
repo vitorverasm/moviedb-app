@@ -24,7 +24,8 @@ const Popular: FC<PopularProps> = ({navigation}: PopularProps) => {
 
   const {data, error, loading} = useMoviePopularGET({
     queryParams: {
-      page
+      page,
+      language: 'pt-BR'
     }
   });
 
