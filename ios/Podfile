@@ -38,6 +38,7 @@ target 'Moviedb' do
 
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
   pod 'Firebase/Auth', '~> 6.3.0'
+  pod 'Firebase/Database', '~> 6.3.0'
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
