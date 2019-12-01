@@ -10,7 +10,7 @@ import {
   PreviousButton,
   SectionPageContainer,
   LoadingText
-} from './styles';
+} from '../styles';
 import MovieCard from '../../../components/movie-card';
 import theme from '../../../styles/theme';
 

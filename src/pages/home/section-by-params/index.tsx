@@ -12,7 +12,7 @@ import {
   NextButton,
   PreviousButton,
   SectionPageContainer
-} from '../popular/styles';
+} from '../styles';
 
 interface SectionByGenreProps {
   genreID?: string;
