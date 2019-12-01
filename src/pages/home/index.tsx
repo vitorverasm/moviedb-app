@@ -13,6 +13,7 @@ import {Section} from '../../types';
 import Sections from '../../utils/sections';
 import Favorites from './favorites';
 import Popular from './popular';
+import SectionByParams from './section-by-params';
 import {
   HeaderLogo,
   HeaderTitle,
@@ -27,7 +28,7 @@ interface Props {
 }
 
 interface State {
-  currentSectionID: string;
+  currentSection: Section;
   loading: boolean;
 }
 
@@ -58,31 +59,39 @@ class Home extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      currentSectionID: '1',
+      currentSection: Sections[0],
       loading: false
     };
   }
 
   onPressItem(item: Section): void {
-    const {currentSectionID} = this.state;
-    if (item.id !== currentSectionID) {
+    const {currentSection} = this.state;
+    if (item.id !== currentSection.id) {
       item.onPress();
-      this.setState({currentSectionID: item.id});
+      this.setState({currentSection: item});
     }
   }
 
   renderSection(): ReactNode {
-    const {currentSectionID} = this.state;
-    switch (currentSectionID) {
+    const {currentSection} = this.state;
+    switch (currentSection.id) {
       case '1':
         return <Popular />;
-      default:
+      case '2':
         return <Favorites />;
+      default:
+        return (
+          <SectionByParams
+            genreID={currentSection.genreID}
+            keywords={currentSection.keywords}
+            excludeKeywords={currentSection.excludeKeywords}
+          />
+        );
     }
   }
 
   render() {
-    const {loading, currentSectionID} = this.state;
+    const {loading, currentSection} = this.state;
     return (
       <Container>
         <SectionListContainer>
@@ -97,7 +106,7 @@ class Home extends Component<Props, State> {
                 backgroundImageDark={item.backgroundImageDark}
                 backgroundImageLight={item.backgroundImageLight}
                 onPress={() => this.onPressItem(item)}
-                selected={item.id === currentSectionID}
+                selected={item.id === currentSection.id}
                 disabled={loading}
               />
             )}

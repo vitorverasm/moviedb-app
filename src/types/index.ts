@@ -42,6 +42,9 @@ export interface Section {
   id: string;
   label: string;
   icon?: string;
+  genreID?: string;
+  keywords?: string;
+  excludeKeywords?: string;
   backgroundImageDark: ImageSourcePropType;
   backgroundImageLight: ImageSourcePropType;
   onPress: () => void;

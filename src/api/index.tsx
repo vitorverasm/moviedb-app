@@ -31,7 +31,7 @@ export type MovieListResponseObject = {
   vote_average?: number;
 };
 
-export type TrendingResponse = {
+export type ResponseSchema = {
   page?: number;
   total_pages?: number;
   total_results?: number;
@@ -1073,26 +1073,26 @@ export type UseMoviePopularGETParams = {
 };
 
 export type MoviePopularGETProps = Omit<
-  GetProps<TrendingResponse, void, UseMoviePopularGETParams>,
+  GetProps<ResponseSchema, void, UseMoviePopularGETParams>,
   'path'
 >;
 
 // MoviePopular_GET
 export const MoviePopularGET = (props: MoviePopularGETProps) => (
-  <Get<TrendingResponse, void, UseMoviePopularGETParams>
+  <Get<ResponseSchema, void, UseMoviePopularGETParams>
     path={`/movie/popular`}
     {...props}
   />
 );
 
 export type UseMoviePopularGETProps = Omit<
-  UseGetProps<TrendingResponse, UseMoviePopularGETParams>,
+  UseGetProps<ResponseSchema, UseMoviePopularGETParams>,
   'path'
 >;
 
 // MoviePopular_GET
 export const useMoviePopularGET = (props: UseMoviePopularGETProps) =>
-  useGet<TrendingResponse, void, UseMoviePopularGETParams>(
+  useGet<ResponseSchema, void, UseMoviePopularGETParams>(
     `/movie/popular`,
     props
   );
@@ -3458,13 +3458,16 @@ export const DiscoverMovieGET = (props: DiscoverMovieGETProps) => (
 );
 
 export type UseDiscoverMovieGETProps = Omit<
-  UseGetProps<void, DiscoverMovieGETQueryParams>,
+  UseGetProps<ResponseSchema, DiscoverMovieGETQueryParams>,
   'path'
 >;
 
 // DiscoverMovie_GET
 export const useDiscoverMovieGET = (props: UseDiscoverMovieGETProps) =>
-  useGet<void, void, DiscoverMovieGETQueryParams>(`/discover/movie`, props);
+  useGet<ResponseSchema, void, DiscoverMovieGETQueryParams>(
+    `/discover/movie`,
+    props
+  );
 
 export interface DiscoverTvGETQueryParams {
   sort_by?: SortByEnum1;
@@ -3728,7 +3731,7 @@ export type UseTrendingByMediaTypeAndTimeWindowGETParams = {
 };
 
 export type UseTrendingByMediaTypeAndTimeWindowGETProps = Omit<
-  UseGetProps<TrendingResponse, UseTrendingByMediaTypeAndTimeWindowGETParams>,
+  UseGetProps<ResponseSchema, UseTrendingByMediaTypeAndTimeWindowGETParams>,
   'path'
 > & {
   media_type: string;
@@ -3741,7 +3744,7 @@ export const useTrendingByMediaTypeAndTimeWindowGET = ({
   time_window,
   ...props
 }: UseTrendingByMediaTypeAndTimeWindowGETProps) =>
-  useGet<TrendingResponse, void, UseTrendingByMediaTypeAndTimeWindowGETParams>(
+  useGet<ResponseSchema, void, UseTrendingByMediaTypeAndTimeWindowGETParams>(
     `/trending/${media_type}/${time_window}`,
     props
   );
