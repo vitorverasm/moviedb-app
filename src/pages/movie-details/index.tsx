@@ -28,6 +28,7 @@ import {
   DetailsButton,
   TextShimmer
 } from './styles';
+import Routes from '../../routes/routeTypes';
 
 interface Navigation
   extends NavigationScreenProp<
@@ -109,7 +110,14 @@ const MovieDetails: MovieDetailsInterface = ({
           </BadgesRow>
           <Content>
             <ContentBody>
-              <DetailsButton icon="play-circle-outline" onPress={() => {}}>
+              <DetailsButton
+                icon="play-circle-outline"
+                onPress={() =>
+                  navigation.navigate(Routes.MOVIE_VIDEOS, {
+                    movieID: navigation.getParam('movieID', null),
+                    movieTitle: navigation.getParam('movieTitle', null)
+                  })
+                }>
                 Ver vídeos
               </DetailsButton>
             </ContentBody>

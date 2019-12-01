@@ -98,6 +98,30 @@ export type ResponseDetailsSchema = {
   vote_count?: number;
 };
 
+export type VideoType =
+  | 'Trailer'
+  | 'Teaser'
+  | 'Clip'
+  | 'Featurette'
+  | 'Behind the Scenes'
+  | 'Bloopers';
+
+export type VideoResult = {
+  id?: string;
+  iso_639_1?: string;
+  iso_3166_1?: string;
+  key?: string;
+  name?: string;
+  site?: string;
+  size?: number;
+  type?: VideoType;
+};
+
+export type ResponseVideosSchema = {
+  id?: number;
+  results?: VideoResult[];
+};
+
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 export type SortByEnum =
@@ -1003,6 +1027,7 @@ export const useMovieAccountStatesByMovieIdGET = ({
 
 export interface MovieVideosByMovieIdGETQueryParams {
   api_key?: string;
+  language?: string;
 }
 
 export type MovieVideosByMovieIdGETProps = Omit<
@@ -1022,7 +1047,7 @@ export const MovieVideosByMovieIdGET = ({
 );
 
 export type UseMovieVideosByMovieIdGETProps = Omit<
-  UseGetProps<void, MovieVideosByMovieIdGETQueryParams>,
+  UseGetProps<ResponseVideosSchema, MovieVideosByMovieIdGETQueryParams>,
   'path'
 > & {movie_id: number};
 
@@ -1031,7 +1056,7 @@ export const useMovieVideosByMovieIdGET = ({
   movie_id,
   ...props
 }: UseMovieVideosByMovieIdGETProps) =>
-  useGet<void, void, MovieVideosByMovieIdGETQueryParams>(
+  useGet<ResponseVideosSchema, void, MovieVideosByMovieIdGETQueryParams>(
     `/movie/${movie_id}/videos`,
     props
   );
