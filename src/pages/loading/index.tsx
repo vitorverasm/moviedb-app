@@ -33,7 +33,7 @@ class Loading extends Component<Props> {
       navigation: {navigate}
     } = this.props;
     this.listener = firebase.auth().onAuthStateChanged(user => {
-      navigate(user ? Routes.HOME : Routes.LOGIN);
+      navigate(user ? Routes.MOVIE_DETAILS : Routes.LOGIN);
     });
   }
 

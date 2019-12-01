@@ -7,10 +7,14 @@ import Register from '../pages/register';
 import Routes from './routeTypes';
 import MovieDetails from '../pages/movie-details';
 
-const AppStack = createStackNavigator({
-  [Routes.HOME]: Popular,
-  [Routes.MOVIE_DETAILS]: MovieDetails
-});
+const AppStack = createStackNavigator(
+  {
+    [Routes.HOME]: Popular,
+    [Routes.MOVIE_DETAILS]: MovieDetails
+  },
+  {initialRouteName: Routes.HOME}
+);
+
 const AuthStack = createStackNavigator(
   {
     [Routes.LOGIN]: Login,

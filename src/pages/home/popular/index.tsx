@@ -53,6 +53,7 @@ const Popular: FC<PopularProps> = ({navigation}: PopularProps) => {
                 navigation={navigation}
                 posterPath={item.poster_path}
                 loading={loading}
+                title={item.title}
               />
             )}
           />

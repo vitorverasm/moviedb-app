@@ -64,6 +64,7 @@ const SectionByParams: FC<SectionByGenreProps> = ({
                 navigation={navigation}
                 posterPath={item.poster_path}
                 loading={loading}
+                title={item.title}
               />
             )}
           />

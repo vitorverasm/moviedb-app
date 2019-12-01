@@ -1,12 +1,31 @@
 import React, {FC} from 'react';
-import {NavigationStackProp} from 'react-navigation-stack';
+import {NavigationScreenProp, NavigationState} from 'react-navigation';
+import {
+  NavigationStackOptions,
+  NavigationStackProp
+} from 'react-navigation-stack';
 import {PageContainer, PageTitle} from './styles';
+import theme from '../../styles/theme';
+
+interface Navigation
+  extends NavigationScreenProp<
+    NavigationState,
+    {movieID?: string; movieTitle?: string}
+  > {}
 
 interface MovieDetailsProps {
-  navigation: NavigationStackProp<{movieID?: string}>;
+  navigation: NavigationStackProp<{movieID?: string; movieTitle?: string}>;
 }
 
-const MovieDetails: FC<MovieDetailsProps> = ({
+interface MovieDetailsInterface extends FC<MovieDetailsProps> {
+  navigationOptions?: ({
+    navigation
+  }: {
+    navigation: Navigation;
+  }) => NavigationStackOptions;
+}
+
+const MovieDetails: MovieDetailsInterface = ({
   navigation
 }: MovieDetailsProps) => {
   return (
@@ -15,5 +34,17 @@ const MovieDetails: FC<MovieDetailsProps> = ({
     </PageContainer>
   );
 };
+
+MovieDetails.navigationOptions = ({
+  navigation
+}: {
+  navigation: Navigation;
+}): NavigationStackOptions => ({
+  title: navigation.getParam('movieTitle', ''),
+  headerTintColor: theme.colors.primary,
+  headerTitleStyle: {
+    fontWeight: 'bold'
+  }
+});
 
 export default MovieDetails;

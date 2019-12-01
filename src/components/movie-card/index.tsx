@@ -8,19 +8,24 @@ interface MovieCardProps {
   posterPath?: string | null;
   loading?: boolean;
   navigation: NavigationStackProp<{}>;
+  title?: string;
 }
 
 const MovieCard: FC<MovieCardProps> = ({
   id,
   posterPath,
   loading,
-  navigation
+  navigation,
+  title
 }: MovieCardProps) => {
   return (
     <CardContainer
       key={id}
       onPress={() => {
-        navigation.navigate(Routes.MOVIE_DETAILS, {movieID: id});
+        navigation.navigate(Routes.MOVIE_DETAILS, {
+          movieID: id,
+          movieTitle: title
+        });
       }}
       centered
       elevation={3}
