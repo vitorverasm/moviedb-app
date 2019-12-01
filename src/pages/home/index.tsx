@@ -4,13 +4,12 @@ import {
   NavigationStackOptions,
   NavigationStackProp
 } from 'react-navigation-stack';
-import reactotron from 'reactotron-react-native';
 import ENV from '../../../env.json';
 import {logout} from '../../api/authentication';
 import Card from '../../components/card';
 import Routes from '../../routes/routeTypes';
 import {Container} from '../../styles';
-import {Error, Section} from '../../types';
+import {Section} from '../../types';
 import Sections from '../../utils/sections';
 import Favorites from './favorites';
 import Popular from './popular';
@@ -30,7 +29,6 @@ interface Props {
 interface State {
   currentSectionID: string;
   loading: boolean;
-  error: Error;
 }
 
 class Home extends Component<Props, State> {
@@ -61,8 +59,7 @@ class Home extends Component<Props, State> {
     super(props);
     this.state = {
       currentSectionID: '1',
-      loading: false,
-      error: {message: '', status: false}
+      loading: false
     };
   }
 
@@ -85,8 +82,7 @@ class Home extends Component<Props, State> {
   }
 
   render() {
-    const {loading, error, currentSectionID} = this.state;
-    reactotron.log({loading, error});
+    const {loading, currentSectionID} = this.state;
     return (
       <Container>
         <SectionListContainer>
