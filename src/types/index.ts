@@ -47,7 +47,6 @@ export interface Section {
   excludeKeywords?: string;
   backgroundImageDark: ImageSourcePropType;
   backgroundImageLight: ImageSourcePropType;
-  onPress: () => void;
 }
 
 export interface SectionProps<TResponse> {

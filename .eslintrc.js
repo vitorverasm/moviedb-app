@@ -12,7 +12,8 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', {devDependencies: true}],
     'no-console': 'off',
     'global-require': 'off',
-    'eslint-comments/no-unlimited-disable': 'off'
+    'eslint-comments/no-unlimited-disable': 'off',
+    '@typescript-eslint/camelcase': 'off'
   },
   globals: {
     HermesInternal: true
