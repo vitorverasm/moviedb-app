@@ -1,5 +1,6 @@
 import React, {FC, useEffect, useState} from 'react';
 import {ActivityIndicator, FlatList} from 'react-native';
+import {auth} from 'react-native-firebase';
 import {NavigationStackProp} from 'react-navigation-stack';
 import MoviesCollection, {MovieRef} from '../../../api/favorites';
 import MovieCard from '../../../components/movie-card';
@@ -16,29 +17,36 @@ const Favorites: FC<FavoritesProps> = ({navigation}: FavoritesProps) => {
   const [favorites, setFavorites] = useState<MovieRef[]>([]);
 
   useEffect(() => {
-    return MoviesCollection.onSnapshot(querySnapshot => {
-      const list: MovieRef[] = [];
-      querySnapshot.forEach(document => {
-        const {
-          movie_id,
-          poster_path,
-          title,
-          user_id
-        } = document.data() as MovieRef;
-        list.push({
-          movie_id,
-          poster_path,
-          title,
-          user_id
-        });
-      });
+    const user = auth().currentUser;
+    let unsubscribe = () => {};
+    if (user) {
+      unsubscribe = MoviesCollection.where('user_id', '=', user.uid).onSnapshot(
+        querySnapshot => {
+          const list: MovieRef[] = [];
+          querySnapshot.forEach(document => {
+            const {
+              movie_id,
+              poster_path,
+              title,
+              user_id
+            } = document.data() as MovieRef;
+            list.push({
+              movie_id,
+              poster_path,
+              title,
+              user_id
+            });
+          });
 
-      setFavorites(list);
+          setFavorites(list);
 
-      if (loading) {
-        setLoading(false);
-      }
-    });
+          if (loading) {
+            setLoading(false);
+          }
+        }
+      );
+    }
+    return () => unsubscribe();
   }, [loading]);
 
   if (loading) {

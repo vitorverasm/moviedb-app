@@ -19,11 +19,15 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   useEffect(() => {
     const user = auth().currentUser;
+    let unsubscribe = () => {};
     if (user) {
-      moviesCollection
+      unsubscribe = moviesCollection
         .where('user_id', '=', user.uid)
         .where('movie_id', '=', `${movie.id}`)
         .onSnapshot(snapshot => {
+          if (snapshot.docs.length === 0) {
+            setIsFavorite(false);
+          }
           snapshot.forEach(document => {
             const data = document.data() as MovieRef;
             if (movie.id) {
@@ -39,6 +43,7 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({
           }
         });
     }
+    return () => unsubscribe();
   }, [movie, loading]);
 
   return (
