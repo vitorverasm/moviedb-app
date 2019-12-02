@@ -1,3 +1,4 @@
+import {Platform} from 'react-native';
 import {IconButton, Subheading, Title} from 'react-native-paper';
 import styled from 'styled-components/native';
 import {Container, CustomButton} from '../../styles';
@@ -31,7 +32,7 @@ export const LogoutIcon = styled(IconButton).attrs(() => ({
 `;
 
 export const SectionListContainer = styled(Container)`
-  margin-top: 70px;
+  margin-top: ${Platform.OS === 'android' ? '70px' : '100px'};
   padding: 15px;
 `;
 
@@ -44,34 +45,22 @@ export const SectionContainer = styled(Container)`
 export const SectionPageContainer = styled(Container)``;
 
 export const ListContainer = styled(Container)`
+  align-items: center;
   flex: 5;
 `;
 
 export const ButtonsContainer = styled(Container)`
-  max-height: 50px;
+  max-height: 60px;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  background-color: transparent;
-`;
-
-export const NextButton = styled(CustomButton).attrs(() => ({
-  outlined: true
-}))`
-  flex: 1;
-  margin: 5px;
-  background-color: ${theme.colors.white};
-`;
-
-export const PreviousButton = styled(CustomButton).attrs(() => ({
-  outlined: true
-}))`
-  flex: 1;
-  margin: 5px;
-  background-color: ${theme.colors.white};
+  justify-content: space-between;
 `;
 
 export const LoadingText = styled(Subheading)`
   font-weight: bold;
   color: ${theme.colors.primary};
 `;
+
+export const NextPageFab = styled(CustomButton).attrs(() => ({}))``;
+
+export const PreviousPageFab = styled(CustomButton).attrs(() => ({}))``;

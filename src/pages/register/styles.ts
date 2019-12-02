@@ -36,6 +36,7 @@ export const Subtitle = styled(Subheading)`
 
 export const PageContainer = styled(Container)`
   padding-horizontal: 25px;
+  margin-top: 50px;
 `;
 
 export const EmailInput = styled(Input)``;

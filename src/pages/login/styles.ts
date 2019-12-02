@@ -26,6 +26,8 @@ export const LogoTitle = styled(Headline)`
 
 export const PageContainer = styled(Container)`
   padding-horizontal: 25px;
+  margin-top: 50px;
+  /* justify-content: center; */
 `;
 
 export const InputsContainer = styled.View`
