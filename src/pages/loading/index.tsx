@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {ActivityIndicator, StatusBar, View} from 'react-native';
+import firebase from 'react-native-firebase';
 import {NavigationStackProp} from 'react-navigation-stack';
+import Routes from '../../routes/routeTypes';
 
 interface Props {
   navigation: NavigationStackProp<{
@@ -18,14 +20,21 @@ class Loading extends Component<Props> {
     this.isLoggedIn();
   }
 
+  componentWillUnmount() {
+    if (this.listener) {
+      this.listener();
+    }
+  }
+
+  listener: () => void = () => {};
+
   isLoggedIn(): void {
     const {
-      navigation: {navigate, getParam}
+      navigation: {navigate}
     } = this.props;
-    // TODO: ADD later
-    // const userToken = await AsyncStorage.getItem('userToken');
-    const userToken: boolean = getParam('isLoggedIn', false);
-    navigate(userToken ? 'App' : 'Auth');
+    this.listener = firebase.auth().onAuthStateChanged(user => {
+      navigate(user ? Routes.HOME : Routes.LOGIN);
+    });
   }
 
   render() {
