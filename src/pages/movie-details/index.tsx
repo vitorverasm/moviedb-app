@@ -129,10 +129,9 @@ const MovieDetails: MovieDetailsInterface = ({
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 data={data.genres}
+                keyExtractor={item => item!.id!.toString()}
                 renderItem={({item}: {item: Genre}) => (
-                  <DetailsButton key={`${item.id}`} disabled>
-                    {item.name}
-                  </DetailsButton>
+                  <DetailsButton disabled>{item.name}</DetailsButton>
                 )}
               />
             </ContentBody>
