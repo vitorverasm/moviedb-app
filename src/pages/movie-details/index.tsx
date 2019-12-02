@@ -1,34 +1,34 @@
 import React, {FC} from 'react';
 import {StatusBar} from 'react-native';
 import {
+  FlatList,
   NavigationScreenProp,
-  NavigationState,
-  FlatList
+  NavigationState
 } from 'react-navigation';
 import {
   NavigationStackOptions,
   NavigationStackProp
 } from 'react-navigation-stack';
-import {useMovieByMovieIdGET, Genre} from '../../api';
+import {Genre, useMovieByMovieIdGET} from '../../api';
+import Routes from '../../routes/routeTypes';
 import theme from '../../styles/theme';
 import {
   Badges,
   BadgesRow,
   BadgesShimmer,
+  Content,
+  ContentBody,
+  ContentLabel,
+  ContentText,
+  DetailsButton,
   InfoContainer,
   Logo,
   LogoContainer,
   LogoShimmer,
   PageContainer,
   PageTitle,
-  ContentBody,
-  ContentLabel,
-  Content,
-  ContentText,
-  DetailsButton,
   TextShimmer
 } from './styles';
-import Routes from '../../routes/routeTypes';
 
 interface Navigation
   extends NavigationScreenProp<
@@ -106,7 +106,9 @@ const MovieDetails: MovieDetailsInterface = ({
               {data.vote_average}
             </Badges>
             <Badges icon="timelapse" disabled>{`${data.runtime} min`}</Badges>
-            <Badges icon="heart-outline">Favoritar</Badges>
+            <Badges icon="heart-outline" onPress={() => {}}>
+              Favoritar
+            </Badges>
           </BadgesRow>
           <Content>
             <ContentBody>
