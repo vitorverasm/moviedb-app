@@ -14,7 +14,12 @@ const AppStack = createStackNavigator(
     [Routes.MOVIE_DETAILS]: MovieDetails,
     [Routes.MOVIE_VIDEOS]: MovieDetailsVideo
   },
-  {initialRouteName: Routes.HOME}
+  {
+    initialRouteName: Routes.HOME,
+    defaultNavigationOptions: {
+      headerBackTitle: 'Voltar'
+    }
+  }
 );
 
 const AuthStack = createStackNavigator(

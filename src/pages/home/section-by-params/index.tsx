@@ -9,8 +9,8 @@ import {
   ButtonsContainer,
   ListContainer,
   LoadingText,
-  NextButton,
-  PreviousButton,
+  NextPageFab,
+  PreviousPageFab,
   SectionPageContainer
 } from '../styles';
 
@@ -68,10 +68,14 @@ const SectionByParams: FC<SectionByGenreProps> = ({
           />
         </ListContainer>
         <ButtonsContainer>
-          <PreviousButton onPress={() => setPage(page - 1)}>
-            Anterior
-          </PreviousButton>
-          <NextButton onPress={() => setPage(page + 1)}>Próximo</NextButton>
+          <NextPageFab onPress={() => setPage(page + 1)} />
+          <PreviousPageFab
+            onPress={() => {
+              if (page > 1) {
+                setPage(page - 1);
+              }
+            }}
+          />
         </ButtonsContainer>
       </SectionPageContainer>
     );

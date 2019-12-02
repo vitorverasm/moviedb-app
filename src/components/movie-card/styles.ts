@@ -10,6 +10,7 @@ export const CardShape = styled.TouchableOpacity.attrs(() => ({
   border-radius: 8px;
   margin: 8px;
   background-color: ${theme.colors.lightGray};
+  overflow: hidden;
 `;
 
 export const CardContainer = styled(CardShape).attrs(
