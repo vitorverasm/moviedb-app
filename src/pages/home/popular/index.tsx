@@ -1,7 +1,6 @@
 import React, {FC, useState} from 'react';
 import {ActivityIndicator, FlatList} from 'react-native';
 import {NavigationStackProp} from 'react-navigation-stack';
-import reactotron from 'reactotron-react-native';
 import {MovieListResponseObject, useMoviePopularGET} from '../../../api';
 import MovieCard from '../../../components/movie-card';
 import {Text} from '../../../styles';
@@ -22,14 +21,12 @@ interface PopularProps {
 const Popular: FC<PopularProps> = ({navigation}: PopularProps) => {
   const [page, setPage] = useState(1);
 
-  const {data, error, loading} = useMoviePopularGET({
+  const {data, loading} = useMoviePopularGET({
     queryParams: {
       page,
       language: 'pt-BR'
     }
   });
-
-  reactotron.log({data, error, loading});
 
   if (loading) {
     return (

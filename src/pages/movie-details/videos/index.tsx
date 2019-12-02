@@ -7,7 +7,6 @@ import {
   NavigationStackOptions,
   NavigationStackProp
 } from 'react-navigation-stack';
-import reactotron from 'reactotron-react-native';
 import ENV from '../../../../env.json';
 import {useMovieVideosByMovieIdGET} from '../../../api';
 import theme from '../../../styles/theme';
@@ -40,8 +39,6 @@ const MovieDetailsVideo: MovieDetailsVideoInterface = ({
       language: 'pt-BR'
     }
   });
-
-  reactotron.log({data, loading});
 
   if (loading) {
     return (

@@ -4,7 +4,7 @@ import Routes from '../../routes/routeTypes';
 import {CardContainer, CardLogo} from './styles';
 
 interface MovieCardProps {
-  id?: number;
+  id?: number | string;
   posterPath?: string | null;
   loading?: boolean;
   navigation: NavigationStackProp<{}>;

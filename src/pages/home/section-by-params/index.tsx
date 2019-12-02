@@ -1,7 +1,6 @@
 import React, {FC, useState} from 'react';
 import {ActivityIndicator, FlatList} from 'react-native';
 import {NavigationStackProp} from 'react-navigation-stack';
-import reactotron from 'reactotron-react-native';
 import {MovieListResponseObject, useDiscoverMovieGET} from '../../../api';
 import MovieCard from '../../../components/movie-card';
 import {Text} from '../../../styles';
@@ -30,7 +29,7 @@ const SectionByParams: FC<SectionByGenreProps> = ({
 }: SectionByGenreProps) => {
   const [page, setPage] = useState(1);
 
-  const {data, error, loading} = useDiscoverMovieGET({
+  const {data, loading} = useDiscoverMovieGET({
     queryParams: {
       page,
       language: 'pt-BR',
@@ -39,8 +38,6 @@ const SectionByParams: FC<SectionByGenreProps> = ({
       without_keywords: excludeKeywords
     }
   });
-
-  reactotron.log({data, error, loading});
 
   if (loading) {
     return (

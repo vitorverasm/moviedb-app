@@ -1,18 +1,18 @@
 import {auth, firestore} from 'react-native-firebase';
 import {ResponseDetailsSchema} from '.';
 
-type MovieRef = {
+export type MovieRef = {
   movie_id: string;
   poster_path: string;
   title: string;
   user_id: string;
 };
 
+const moviesCollection = firestore().collection('movies');
+
 async function addFavorite(movie: ResponseDetailsSchema): Promise<void> {
   const user = auth().currentUser;
   if (user) {
-    const ref = firestore().collection('movies');
-
     if (movie.id && movie.poster_path && movie.title) {
       const newFavorite: MovieRef = {
         movie_id: movie.id.toString(),
@@ -21,14 +21,13 @@ async function addFavorite(movie: ResponseDetailsSchema): Promise<void> {
         user_id: user.uid
       };
 
-      const document = await firestore()
-        .collection('movies')
+      const document = await moviesCollection
         .where('user_id', '=', user.uid)
         .where('movie_id', '=', movie.id.toString())
         .get();
 
       if (document.docs.length === 0) {
-        await ref.add(newFavorite);
+        await moviesCollection.add(newFavorite);
       }
     }
   }
@@ -37,8 +36,7 @@ async function addFavorite(movie: ResponseDetailsSchema): Promise<void> {
 async function getFavorites(): Promise<MovieRef[]> {
   const user = auth().currentUser;
   if (user) {
-    const response = await firestore()
-      .collection('movies')
+    const response = await moviesCollection
       .where('user_id', '=', user.uid)
       .get();
 
@@ -58,10 +56,8 @@ async function getFavorites(): Promise<MovieRef[]> {
 async function removeFavorite(movie: ResponseDetailsSchema): Promise<void> {
   const user = auth().currentUser;
   if (user) {
-    const ref = firestore().collection('movies');
-
     if (movie.id) {
-      const query = await ref
+      const query = await moviesCollection
         .where('user_id', '=', user.uid)
         .where('movie_id', '=', movie.id.toString())
         .get();
@@ -74,3 +70,4 @@ async function removeFavorite(movie: ResponseDetailsSchema): Promise<void> {
 }
 
 export {addFavorite, getFavorites, removeFavorite};
+export default moviesCollection;

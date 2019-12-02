@@ -67,7 +67,6 @@ class Home extends Component<Props, State> {
   onPressItem(item: Section): void {
     const {currentSection} = this.state;
     if (item.id !== currentSection.id) {
-      item.onPress();
       this.setState({currentSection: item});
     }
   }
@@ -79,7 +78,7 @@ class Home extends Component<Props, State> {
       case '1':
         return <Popular navigation={navigation} />;
       case '2':
-        return <Favorites />;
+        return <Favorites navigation={navigation} />;
       default:
         return (
           <SectionByParams

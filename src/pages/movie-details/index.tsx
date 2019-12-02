@@ -12,6 +12,7 @@ import {
 import {Genre, useMovieByMovieIdGET} from '../../api';
 import Routes from '../../routes/routeTypes';
 import theme from '../../styles/theme';
+import FavoriteButton from './fav-button';
 import {
   Badges,
   BadgesRow,
@@ -106,9 +107,7 @@ const MovieDetails: MovieDetailsInterface = ({
               {data.vote_average}
             </Badges>
             <Badges icon="timelapse" disabled>{`${data.runtime} min`}</Badges>
-            <Badges icon="heart-outline" onPress={() => {}}>
-              Favoritar
-            </Badges>
+            <FavoriteButton movie={data} />
           </BadgesRow>
           <Content>
             <ContentBody>
