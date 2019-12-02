@@ -4,6 +4,13 @@ An app for listing movies from [moviedb](https://developers.themoviedb.org/3/get
 
 ### Screenshots
 
+![Login](https://i.imgur.com/9fcdjSn.png)
+![Register](https://i.imgur.com/vD3KcQf.png)
+![Popular](https://i.imgur.com/s7J2453.png)
+![Favorites](https://i.imgur.com/Ky0jQBe.png)
+![Details](https://i.imgur.com/belIt0X.png)
+![Video](https://i.imgur.com/ZMS4OCC.png)
+
 ## Getting started
 
 First you'll have to clone the App:
