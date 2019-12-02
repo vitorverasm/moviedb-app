@@ -68,14 +68,15 @@ const SectionByParams: FC<SectionByGenreProps> = ({
           />
         </ListContainer>
         <ButtonsContainer>
-          <NextPageFab onPress={() => setPage(page + 1)} />
           <PreviousPageFab
             onPress={() => {
               if (page > 1) {
                 setPage(page - 1);
               }
-            }}
-          />
+            }}>
+            Anterior
+          </PreviousPageFab>
+          <NextPageFab onPress={() => setPage(page + 1)}>Próxima</NextPageFab>
         </ButtonsContainer>
       </SectionPageContainer>
     );

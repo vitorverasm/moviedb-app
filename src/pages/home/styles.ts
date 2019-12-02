@@ -1,7 +1,7 @@
 import {Platform} from 'react-native';
-import {FAB, IconButton, Subheading, Title} from 'react-native-paper';
+import {IconButton, Subheading, Title} from 'react-native-paper';
 import styled from 'styled-components/native';
-import {Container} from '../../styles';
+import {Container, CustomButton} from '../../styles';
 import theme from '../../styles/theme';
 
 export const Logo = styled.Image`
@@ -37,7 +37,7 @@ export const SectionListContainer = styled(Container)`
 `;
 
 export const SectionContainer = styled(Container)`
-  flex: 5;
+  flex: 4;
   margin-horizontal: 20px;
   padding-bottom: 5px;
 `;
@@ -50,11 +50,10 @@ export const ListContainer = styled(Container)`
 `;
 
 export const ButtonsContainer = styled(Container)`
-  max-height: 50px;
+  max-height: 60px;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  background-color: transparent;
+  justify-content: space-between;
 `;
 
 export const LoadingText = styled(Subheading)`
@@ -62,18 +61,6 @@ export const LoadingText = styled(Subheading)`
   color: ${theme.colors.primary};
 `;
 
-export const NextPageFab = styled(FAB).attrs(() => ({
-  icon: 'chevron-right'
-}))`
-  position: absolute;
-  bottom: 20px;
-  right: 10px;
-`;
+export const NextPageFab = styled(CustomButton).attrs(() => ({}))``;
 
-export const PreviousPageFab = styled(FAB).attrs(() => ({
-  icon: 'chevron-left'
-}))`
-  position: absolute;
-  bottom: 20px;
-  left: 10px;
-`;
+export const PreviousPageFab = styled(CustomButton).attrs(() => ({}))``;
